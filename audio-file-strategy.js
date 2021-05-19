@@ -1,6 +1,6 @@
 const { join, basename, sep, extname } = require('path');
 const BaseCopyStrategy = require('./base-copy-strategy.js');
-const getFileExtension = require('../getFileExtension.js');
+const getFileExtension = require('./getFileExtension.js');
 
 class AudioFileStrategy extends BaseCopyStrategy {
   copy(file) {

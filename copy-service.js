@@ -1,10 +1,10 @@
 const { join } = require('path');
 const { readdirSync } = require('fs');
 const rimraf = require('rimraf');
-const getFileExtension = require('../getFileExtension.js');
-const AudioFileStrategy = require('../copy-handlers/audio-file-strategy.js');
-const VideoFilesStrategy = require('../copy-handlers/video-files-strategy.js');
-const OtherFileStrategy = require('../copy-handlers/other-file-strategy.js');
+const getFileExtension = require('./getFileExtension.js');
+const AudioFileStrategy = require('./audio-file-strategy.js');
+const VideoFilesStrategy = require('./video-files-strategy.js');
+const OtherFileStrategy = require('./other-file-strategy.js');
 
 class CopyService {
   outDir = null;
