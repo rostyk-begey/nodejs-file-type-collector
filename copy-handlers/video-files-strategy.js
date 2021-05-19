@@ -1,8 +1,7 @@
-import { join, basename, extname } from 'path';
+const { join, basename, extname } = require('path');
+const BaseCopyStrategy = require('./base-copy-strategy.js');
 
-import BaseCopyStrategy from './base-copy-strategy.js';
-
-export default class VideoFilesStrategy extends BaseCopyStrategy {
+class VideoFilesStrategy extends BaseCopyStrategy {
   copy(file) {
     super.baseCopy(file, join(this.outDir, this.formatFileName(file)));
   }
@@ -25,3 +24,5 @@ export default class VideoFilesStrategy extends BaseCopyStrategy {
     return year ? `${filename} [${year}]${ext}` : `${filename}${ext}`;
   }
 }
+
+module.exports = VideoFilesStrategy;

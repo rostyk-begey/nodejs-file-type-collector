@@ -1,9 +1,8 @@
-import { sep, join, basename, extname } from 'path';
+const { join, basename, sep, extname } = require('path');
+const BaseCopyStrategy = require('./base-copy-strategy.js');
+const getFileExtension = require('../getFileExtension.js');
 
-import getFileExtension from '../getFileExtension.js';
-import BaseCopyStrategy from './base-copy-strategy.js';
-
-export default class AudioFileStrategy extends BaseCopyStrategy {
+class AudioFileStrategy extends BaseCopyStrategy {
   copy(file) {
     const ext = getFileExtension(file);
 
@@ -16,3 +15,5 @@ export default class AudioFileStrategy extends BaseCopyStrategy {
     super.baseCopy(file, join(this.outDir, subDir, dest));
   }
 }
+
+module.exports = AudioFileStrategy;

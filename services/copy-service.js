@@ -1,13 +1,12 @@
-import { join } from 'path';
-import { readdirSync } from 'fs';
-import rimraf from 'rimraf';
+const { join } = require('path');
+const { readdirSync } = require('fs');
+const rimraf = require('rimraf');
+const getFileExtension = require('../getFileExtension.js');
+const AudioFileStrategy = require('../copy-handlers/audio-file-strategy.js');
+const VideoFilesStrategy = require('../copy-handlers/video-files-strategy.js');
+const OtherFileStrategy = require('../copy-handlers/other-file-strategy.js');
 
-import getFileExtension from '../getFileExtension.js';
-import AudioFileStrategy from '../copy-handlers/audio-file-strategy.js';
-import VideoFilesStrategy from '../copy-handlers/video-files-strategy.js';
-import OtherFileStrategy from '../copy-handlers/other-file-strategy.js';
-
-export default class CopyService {
+class CopyService {
   outDir = null;
 
   constructor(outDir) {
@@ -59,7 +58,10 @@ export default class CopyService {
         console.log(`Copied ${file}`);
       } catch (e) {
         console.error(`Error coping ${file}`);
+        console.error(e);
       }
     }
   }
 }
+
+module.exports = CopyService;

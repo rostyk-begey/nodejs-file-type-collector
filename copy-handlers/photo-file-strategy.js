@@ -1,8 +1,7 @@
-import { sep, join, basename } from 'path';
+const { join, basename, sep } = require('path');
+const BaseCopyStrategy = require('./base-copy-strategy.js');
 
-import BaseCopyStrategy from './base-copy-strategy.js';
-
-export default class PhotoFileStrategy extends BaseCopyStrategy {
+class PhotoFileStrategy extends BaseCopyStrategy {
   copy(file) {
     const paths = file.split(sep).slice(1);
 
@@ -15,3 +14,5 @@ export default class PhotoFileStrategy extends BaseCopyStrategy {
     super.baseCopy(file, join(this.outDir, ...subDirs, filename));
   }
 }
+
+module.exports = PhotoFileStrategy;

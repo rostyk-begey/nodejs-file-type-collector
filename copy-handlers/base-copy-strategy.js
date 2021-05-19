@@ -1,7 +1,7 @@
-import { dirname } from 'path';
-import { existsSync, mkdirSync, copyFileSync } from 'fs';
+const { dirname } = require('path');
+const { existsSync, mkdirSync, copyFileSync } = require('fs');
 
-export default class BaseCopyStrategy {
+class BaseCopyStrategy {
   outDir = 'output_root';
 
   constructor(outDir = 'output_root') {
@@ -20,3 +20,5 @@ export default class BaseCopyStrategy {
     copyFileSync(src, dest);
   };
 }
+
+module.exports = BaseCopyStrategy;
