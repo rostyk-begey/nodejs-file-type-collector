@@ -1,20 +1,10 @@
 import { join, basename, extname } from 'path';
 
-import { getExtName, copy } from '../utils.js';
-import CopyFilesHandler from './copy-files.handler.js';
+import BaseCopyStrategy from './base-copy-strategy.js';
 
-export default class CopyVideoFilesHandler extends CopyFilesHandler {
-  constructor(outDir) {
-    super(outDir);
-    this.outDir = join(this.outDir, 'films');
-  }
-
+export default class VideoFilesStrategy extends BaseCopyStrategy {
   copy(file) {
-    const ext = getExtName(file);
-    if (['mp4', 'avi', 'mkv'].includes(ext)) {
-      return copy(file, join(this.outDir, this.formatFileName(file)));
-    }
-    return super.copy(file);
+    super.baseCopy(file, join(this.outDir, this.formatFileName(file)));
   }
 
   capitalizeFirstLetter(string) {
